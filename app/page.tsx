@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { Search, Users, BookOpen, CheckCircle, DollarSign, Target, Clock } from 'lucide-react';
 
 export default function Home() {
@@ -15,15 +16,15 @@ export default function Home() {
           </div>
 
           <nav className="hidden md:flex items-center gap-8">
-            <a href="#" className="text-gray-700 text-sm font-medium hover:text-gray-900">Find Tutor</a>
-            <a href="#" className="text-gray-700 text-sm font-medium hover:text-gray-900">Become a Tutor</a>
+            <Link href="/find-tutors" className="text-gray-700 text-sm font-medium hover:text-gray-900">Find Tutor</Link>
+            <Link href="/onboarding/teacher" className="text-gray-700 text-sm font-medium hover:text-gray-900">Become a Tutor</Link>
             <a href="#" className="text-gray-700 text-sm font-medium hover:text-gray-900">How It Works</a>
             <a href="#" className="text-gray-700 text-sm font-medium hover:text-gray-900">About Us</a>
           </nav>
 
           <div className="flex items-center gap-3">
-            <button className="text-blue-600 font-semibold text-base hover:text-blue-700">Log In</button>
-            <button className="bg-blue-600 text-white px-7 py-2.5 rounded-lg font-semibold text-base hover:bg-blue-700">Sign Up</button>
+            <Link href="/onboarding" className="text-blue-600 font-semibold text-base hover:text-blue-700">Log In</Link>
+            <Link href="/onboarding" className="bg-blue-600 text-white px-7 py-2.5 rounded-lg font-semibold text-base hover:bg-blue-700">Sign Up</Link>
           </div>
         </div>
       </header>
@@ -48,8 +49,8 @@ export default function Home() {
                   />
                 </div>
                 <div className="flex gap-3 flex-wrap">
-                  <button className="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold text-base hover:bg-blue-700">Find a Tutor</button>
-                  <button className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-lg font-semibold text-base hover:bg-blue-50">Become a Tutor</button>
+                  <Link href="/find-tutors" className="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold text-base hover:bg-blue-700">Find a Tutor</Link>
+                  <Link href="/onboarding/teacher" className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-lg font-semibold text-base hover:bg-blue-50">Become a Tutor</Link>
                   <button className="text-gray-700 px-8 py-4 font-semibold text-base hover:text-gray-900">How It Works</button>
                 </div>
               </div>
@@ -146,7 +147,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to get started?</h2>
           <p className="text-blue-100 mb-8 text-lg">Find a tutor today and ace your courses</p>
-          <button className="bg-white text-blue-600 px-10 py-4 rounded-lg font-bold text-base hover:bg-blue-50">Find a Tutor</button>
+          <Link href="/onboarding" className="bg-white text-blue-600 px-10 py-4 rounded-lg font-bold text-base hover:bg-blue-50">Find a Tutor</Link>
         </div>
       </section>
     </div>
