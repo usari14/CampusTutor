@@ -15,9 +15,6 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "CampusTutor",
   description: "Affordable peer tutoring for university students.",
-  icons: {
-    icon: '/favicon.svg',
-  },
 };
 
 export default function RootLayout({
