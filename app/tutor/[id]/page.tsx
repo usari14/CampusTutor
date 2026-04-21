@@ -1,10 +1,11 @@
-'use client';
-
 import { tutors } from '@/lib/tutors';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { use } from 'react';
 import { Star, MapPin, Clock, CheckCircle, Users, ChevronLeft, MessageSquare } from 'lucide-react';
+
+export function generateStaticParams() {
+  return tutors.map(t => ({ id: String(t.id) }));
+}
 
 const reviews = [
   { name: 'Ahmed K.', rating: 5, date: 'May 2024', comment: 'Extremely helpful! Explained Calculus concepts clearly and patiently.' },
@@ -12,15 +13,14 @@ const reviews = [
   { name: 'John D.', rating: 4, date: 'April 2024', comment: 'Very good session, helped me prepare for my exam.' },
 ];
 
-export default function TutorProfile({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = use(params);
+export default async function TutorProfile({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
   const tutor = tutors.find(t => t.id === Number(id));
 
   if (!tutor) notFound();
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
       <header className="bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -35,7 +35,7 @@ export default function TutorProfile({ params }: { params: Promise<{ id: string 
             <Link href="/dashboard" className="text-gray-700 text-sm font-medium hover:text-gray-900">Dashboard</Link>
           </nav>
           <div className="flex items-center gap-3">
-            <Link href="/onboarding" className="text-blue-600 font-semibold text-base hover:text-blue-700">Log In</Link>
+            <Link href="/login" className="text-blue-600 font-semibold text-base hover:text-blue-700">Log In</Link>
             <Link href="/onboarding" className="bg-blue-600 text-white px-7 py-2.5 rounded-lg font-semibold text-base hover:bg-blue-700">Sign Up</Link>
           </div>
         </div>
@@ -48,9 +48,7 @@ export default function TutorProfile({ params }: { params: Promise<{ id: string 
         </Link>
 
         <div className="grid lg:grid-cols-3 gap-8">
-          {/* Left — Profile Info */}
           <div className="lg:col-span-2 space-y-6">
-            {/* Profile Card */}
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
               <div className="flex flex-col sm:flex-row gap-6">
                 <div className="relative flex-shrink-0">
@@ -92,13 +90,11 @@ export default function TutorProfile({ params }: { params: Promise<{ id: string 
               </div>
             </div>
 
-            {/* About */}
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
               <h2 className="text-lg font-bold text-gray-900 mb-3">About</h2>
               <p className="text-gray-600">{tutor.bio}</p>
             </div>
 
-            {/* Subjects */}
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
               <h2 className="text-lg font-bold text-gray-900 mb-4">Subjects</h2>
               <div className="flex flex-wrap gap-2">
@@ -110,7 +106,6 @@ export default function TutorProfile({ params }: { params: Promise<{ id: string 
               </div>
             </div>
 
-            {/* Reviews */}
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
               <h2 className="text-lg font-bold text-gray-900 mb-4">Reviews</h2>
               <div className="space-y-4">
@@ -139,7 +134,6 @@ export default function TutorProfile({ params }: { params: Promise<{ id: string 
             </div>
           </div>
 
-          {/* Right — Booking Card */}
           <div className="space-y-6">
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 sticky top-6">
               <p className="text-3xl font-bold text-gray-900 mb-1">
@@ -168,10 +162,7 @@ export default function TutorProfile({ params }: { params: Promise<{ id: string 
                 )}
               </div>
 
-              <Link
-                href="/booking"
-                className="block w-full bg-blue-600 text-white py-3 rounded-lg font-semibold text-center hover:bg-blue-700 mb-3"
-              >
+              <Link href="/booking" className="block w-full bg-blue-600 text-white py-3 rounded-lg font-semibold text-center hover:bg-blue-700 mb-3">
                 Book a Session
               </Link>
               <button className="w-full border-2 border-blue-600 text-blue-600 py-3 rounded-lg font-semibold hover:bg-blue-50 flex items-center justify-center gap-2">
