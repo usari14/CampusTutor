@@ -1,12 +1,16 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { Search, Users, BookOpen, CheckCircle, DollarSign, Target, Clock } from 'lucide-react';
+
+const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="border-b border-gray-200">
+      <header className="border-b border-gray-200 sticky top-0 bg-white z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
@@ -17,9 +21,8 @@ export default function Home() {
 
           <nav className="hidden md:flex items-center gap-8">
             <Link href="/find-tutors" className="text-gray-700 text-sm font-medium hover:text-gray-900">Find Tutor</Link>
-            <Link href="/onboarding/teacher" className="text-gray-700 text-sm font-medium hover:text-gray-900">Become a Tutor</Link>
-            <a href="#" className="text-gray-700 text-sm font-medium hover:text-gray-900">How It Works</a>
-            <a href="#" className="text-gray-700 text-sm font-medium hover:text-gray-900">About Us</a>
+            <button onClick={() => scrollTo('how-it-works')} className="text-gray-700 text-sm font-medium hover:text-gray-900">How It Works</button>
+            <button onClick={() => scrollTo('about')} className="text-gray-700 text-sm font-medium hover:text-gray-900">About Us</button>
           </nav>
 
           <div className="flex items-center gap-3">
@@ -50,8 +53,7 @@ export default function Home() {
                 </div>
                 <div className="flex gap-3 flex-wrap">
                   <Link href="/find-tutors" className="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold text-base hover:bg-blue-700">Find a Tutor</Link>
-                  <Link href="/onboarding/teacher" className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-lg font-semibold text-base hover:bg-blue-50">Become a Tutor</Link>
-                  <button className="text-gray-700 px-8 py-4 font-semibold text-base hover:text-gray-900">How It Works</button>
+                  <button onClick={() => scrollTo('how-it-works')} className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-lg font-semibold text-base hover:bg-blue-50">How It Works</button>
                 </div>
               </div>
             </div>
@@ -69,7 +71,7 @@ export default function Home() {
       </section>
 
       {/* How It Works */}
-      <section className="py-16 bg-gray-50">
+      <section id="how-it-works" className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-14">How It Works</h2>
           <div className="grid md:grid-cols-3 gap-8">
@@ -91,7 +93,7 @@ export default function Home() {
       </section>
 
       {/* Why CampusTutor */}
-      <section className="py-16">
+      <section id="about" className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-14">Why CampusTutor?</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">

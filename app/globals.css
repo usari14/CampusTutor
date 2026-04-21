@@ -40,6 +40,12 @@ option {
   color: #111827;
 }
 
+/* Blue/Green buttons always have white text */
+.bg-blue-600 { color: #ffffff !important; }
+.bg-blue-700 { color: #ffffff !important; }
+.bg-green-600 { color: #ffffff !important; }
+.bg-green-700 { color: #ffffff !important; }
+
 /* Override Tailwind gray text utilities to be darker */
 .text-gray-400 { color: #4b5563 !important; }
 .text-gray-500 { color: #374151 !important; }

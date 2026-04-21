@@ -37,7 +37,6 @@ export default function FindTutors() {
           <nav className="hidden md:flex items-center gap-8">
             <Link href="/" className="text-gray-700 text-sm font-medium hover:text-gray-900">Home</Link>
             <Link href="/find-tutors" className="text-blue-600 text-sm font-medium hover:text-blue-700">Find Tutor</Link>
-            <Link href="/onboarding/teacher" className="text-gray-700 text-sm font-medium hover:text-gray-900">Become a Tutor</Link>
             <Link href="/dashboard" className="text-gray-700 text-sm font-medium hover:text-gray-900">Dashboard</Link>
           </nav>
 
